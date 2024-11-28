@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 @RoutePage()
 class RegisterScreen extends StatefulWidget {
   final Function()? onTap;
-  RegisterScreen({
+  const RegisterScreen({
     super.key,
     required this.onTap,
   });
@@ -33,23 +33,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
         );
       },
     );
-
-    // Error message to user
-    void errorMessage(String message) {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text('Error'),
-            content: Text(message),
-          );
-        },
-      );
+    if (passwordController.text.trim() !=
+        confirmPasswordController.text.trim()) {
+      errorMessage;
     }
-
-    // Try creating user
+    //try creating user
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
@@ -63,6 +53,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
       // Show error message
       errorMessage(e.code);
     }
+  }
+
+  // Error message to user
+  void errorMessage(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Error'),
+          content: Text(message),
+        );
+      },
+    );
   }
 
   @override
