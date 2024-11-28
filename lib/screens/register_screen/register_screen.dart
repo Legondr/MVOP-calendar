@@ -33,11 +33,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
         );
       },
     );
+
+    // Check if passwords match
     if (passwordController.text.trim() !=
         confirmPasswordController.text.trim()) {
-      errorMessage;
+      // Close the loading dialog before showing the error
+      Navigator.pop(context);
+      errorMessage("Passwords do not match.");
+      return; // Stop further execution
     }
-    //try creating user
+
+    // Try creating user
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
