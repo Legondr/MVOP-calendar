@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:calendar/screens/components/custom_button.dart';
 import 'package:calendar/screens/components/custom_text_field.dart';
+import 'package:calendar/screens/components/square_tile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -96,6 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   hintText: 'Email',
                   obscureText: false,
                 ),
+                // Image.asset('assets/images/apple.png'),
 
                 // Password text field
                 CustomTextField(
@@ -162,8 +164,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Placeholder for Google or Apple buttons
+                    //Placeholder for Google or Apple buttons
+                    //SquareTile(imagePath: 'assets/images/google.png'),
                     SizedBox(width: 10),
+                    //SquareTile(imagePath: 'assets/images/apple.png')
                   ],
                 ),
 
