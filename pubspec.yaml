@@ -13,6 +13,8 @@ dependencies:
   auto_route: ^9.2.2
   firebase_auth: ^5.3.3
   syncfusion_flutter_calendar: ^27.2.4
+  cloud_firestore: ^5.5.1
+  google_sign_in: ^6.2.2
 
 dev_dependencies:
   flutter_test:
@@ -22,7 +24,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
 
-assets:
-  - assets/images/google.png
-  - assets/images/apple.png

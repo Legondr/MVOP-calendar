@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:calendar/screens/components/custom_button.dart';
 import 'package:calendar/screens/components/custom_text_field.dart';
+import 'package:calendar/screens/components/square_tile.dart';
+import 'package:calendar/services/auth/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -51,10 +53,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
       );
 
       // Pop loading circle
-      Navigator.pop(context);
+      // Ensure widget is mounted before popping the loading circle
+      if (mounted) {
+        Navigator.pop(context);
+      }
     } on FirebaseAuthException catch (e) {
-      // Pop loading circle
-      Navigator.pop(context);
+      // Ensure widget is mounted before popping the loading circle
+      if (mounted) {
+        Navigator.pop(context);
+      }
 
       // Show error message
       errorMessage(e.code);
@@ -175,11 +182,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                 // Sign in via Apple or Google (Currently empty)
                 const SizedBox(height: 20),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Placeholder for Google or Apple buttons
+                    //Placeholder for Google or Apple buttons
+                    SquareTile(
+                        onTap: () => AuthService().singInWithGoogle(),
+                        imagePath: 'assets/images/google.png'),
                     SizedBox(width: 10),
+                    SquareTile(
+                        onTap: () => AuthService().signInWithApple(),
+                        imagePath: 'assets/images/apple.png')
                   ],
                 ),
 
