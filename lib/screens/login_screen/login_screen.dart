@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:calendar/screens/components/custom_button.dart';
 import 'package:calendar/screens/components/custom_text_field.dart';
 import 'package:calendar/screens/components/square_tile.dart';
+import 'package:calendar/screens/forgot_password_screen/forgot_password_screen.dart';
 import 'package:calendar/services/auth/auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -133,20 +134,40 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureText: true,
                 ),
 
+                const SizedBox(
+                  height: 10,
+                ),
                 // Forget password
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        'Forgot password?',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 100, 98, 98),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ForgotPasswordScreen();
+                              },
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'Forgot password?',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 3, 192, 244),
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],
                   ),
+                ),
+
+                const SizedBox(
+                  height: 10,
                 ),
 
                 // Sign in button

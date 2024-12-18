@@ -1,4 +1,5 @@
 import 'package:calendar/screens/auth_screen/auth_screen.dart';
+import 'package:calendar/screens/forgot_password_screen/forgot_password_screen.dart';
 import 'package:calendar/screens/home_screen/home_screen.dart';
 import 'package:calendar/screens/register_screen/register_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,10 @@ class AppRouter extends RootStackRouter {
         ),
         AutoRoute(
           page: HomeRoute.page,
-        )
+        ),
+        AutoRoute(
+          //this is not working
+          page: ForgotPasswordRoute.page,
+        ),
       ];
 }
